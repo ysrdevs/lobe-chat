@@ -10,7 +10,7 @@ One-click **FREE** deployment of your private ChatGPT/Gemini/Ollama chat applica
 
 **English** · [简体中文](./README.zh-CN.md) · [Changelog](./CHANGELOG.md) · [Documents][docs] · [Report Bug][github-issues-link] · [Request Feature][github-issues-link]
 
-<!-- SHIELD GROUP -->
+<!-- SHIELD GROUP. -->
 
 [![][github-release-shield]][github-release-link]
 [![][docker-release-shield]][docker-release-link]
