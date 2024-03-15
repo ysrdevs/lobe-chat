@@ -13,6 +13,7 @@ import {
   LobeAzureOpenAI,
   LobeBedrockAI,
   LobeGoogleAI,
+  LobeGroq,
   LobeMistralAI,
   LobeMoonshotAI,
   LobeOllamaAI,
@@ -162,9 +163,14 @@ class AgentRuntime {
         runtimeModel = this.initAnthropic(payload);
         break;
       }
-      
+
       case ModelProvider.Mistral: {
         runtimeModel = this.initMistral(payload);
+        break;
+      }
+
+      case ModelProvider.Groq: {
+        runtimeModel = this.initGroq(payload);
         break;
       }
     }
@@ -256,17 +262,24 @@ class AgentRuntime {
   }
 
   private static initAnthropic(payload: JWTPayload) {
-    const { ANTHROPIC_API_KEY } = getServerConfig();
+    const { ANTHROPIC_API_KEY, ANTHROPIC_PROXY_URL } = getServerConfig();
     const apiKey = apiKeyManager.pick(payload?.apiKey || ANTHROPIC_API_KEY);
-
-    return new LobeAnthropicAI({ apiKey });
+    const baseURL = payload?.endpoint || ANTHROPIC_PROXY_URL;
+    return new LobeAnthropicAI({ apiKey, baseURL });
   }
-  
+
   private static initMistral(payload: JWTPayload) {
     const { MISTRAL_API_KEY } = getServerConfig();
     const apiKey = apiKeyManager.pick(payload?.apiKey || MISTRAL_API_KEY);
 
     return new LobeMistralAI({ apiKey });
+  }
+
+  private static initGroq(payload: JWTPayload) {
+    const { GROQ_API_KEY } = getServerConfig();
+    const apiKey = apiKeyManager.pick(payload?.apiKey || GROQ_API_KEY);
+
+    return new LobeGroq({ apiKey });
   }
 }
 

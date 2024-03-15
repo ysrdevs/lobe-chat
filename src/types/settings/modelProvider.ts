@@ -63,9 +63,15 @@ export interface PerplexityConfig {
 export interface AnthropicConfig {
   apiKey?: string;
   enabled: boolean;
+  endpoint?: string;
 }
 
 export interface MistralConfig {
+  apiKey?: string;
+  enabled: boolean;
+}
+
+export interface GroqConfig {
   apiKey?: string;
   enabled: boolean;
 }
@@ -75,6 +81,7 @@ export interface GlobalLLMConfig {
   azure: AzureOpenAIConfig;
   bedrock: AWSBedrockConfig;
   google: GoogleConfig;
+  groq: GroqConfig;
   mistral: MistralConfig;
   moonshot: MoonshotConfig;
   ollama: OllamaConfig;
