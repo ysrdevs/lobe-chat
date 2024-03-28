@@ -37,6 +37,9 @@ const getStatus = (errorType: ILobeAgentRuntimeErrorType | ErrorType) => {
     case AgentRuntimeErrorType.MoonshotBizError: {
       return 476;
     }
+    case AgentRuntimeErrorType.OpenRouterBizError: {
+      return 477;
+    }
     case ChatErrorType.OllamaServiceUnavailable:
     case AgentRuntimeErrorType.OllamaBizError: {
       return 478;
@@ -52,6 +55,9 @@ const getStatus = (errorType: ILobeAgentRuntimeErrorType | ErrorType) => {
     }
     case AgentRuntimeErrorType.GroqBizError: {
       return 482;
+    }
+    case AgentRuntimeErrorType.ZeroOneBizError: {
+      return 483;
     }
   }
   return errorType as number;

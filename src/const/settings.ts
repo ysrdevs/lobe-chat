@@ -6,6 +6,7 @@ import {
   GlobalDefaultAgent,
   GlobalLLMConfig,
   GlobalSettings,
+  GlobalSyncSettings,
   GlobalTTSConfig,
 } from '@/types/settings';
 
@@ -87,7 +88,15 @@ export const DEFAULT_LLM_CONFIG: GlobalLLMConfig = {
     enabled: true,
     models: [],
   },
+  openrouter: {
+    apiKey: '',
+    enabled: false,
+  },
   perplexity: {
+    apiKey: '',
+    enabled: false,
+  },
+  zeroone: {
     apiKey: '',
     enabled: false,
   },
@@ -117,9 +126,14 @@ export const DEFAULT_TOOL_CONFIG = {
   },
 };
 
+const DEFAULT_SYNC_CONFIG: GlobalSyncSettings = {
+  webrtc: { enabled: false },
+};
+
 export const DEFAULT_SETTINGS: GlobalSettings = {
   defaultAgent: DEFAULT_AGENT,
   languageModel: DEFAULT_LLM_CONFIG,
+  sync: DEFAULT_SYNC_CONFIG,
   tool: DEFAULT_TOOL_CONFIG,
   tts: DEFAULT_TTS_CONFIG,
   ...DEFAULT_BASE_SETTINGS,

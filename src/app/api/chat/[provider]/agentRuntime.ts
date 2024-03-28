@@ -18,8 +18,10 @@ import {
   LobeMoonshotAI,
   LobeOllamaAI,
   LobeOpenAI,
+  LobeOpenRouterAI,
   LobePerplexityAI,
   LobeRuntimeAI,
+  LobeZeroOneAI,
   LobeZhipuAI,
   ModelProvider,
 } from '@/libs/agent-runtime';
@@ -173,6 +175,16 @@ class AgentRuntime {
         runtimeModel = this.initGroq(payload);
         break;
       }
+
+      case ModelProvider.OpenRouter: {
+        runtimeModel = this.initOpenRouter(payload);
+        break;
+      }
+
+      case ModelProvider.ZeroOne: {
+        runtimeModel = this.initZeroOne(payload);
+        break;
+      }
     }
 
     return new AgentRuntime(runtimeModel);
@@ -281,6 +293,21 @@ class AgentRuntime {
 
     return new LobeGroq({ apiKey });
   }
+
+  private static initOpenRouter(payload: JWTPayload) {
+    const { OPENROUTER_API_KEY } = getServerConfig();
+    const apiKey = apiKeyManager.pick(payload?.apiKey || OPENROUTER_API_KEY);
+
+    return new LobeOpenRouterAI({ apiKey });
+  }
+
+  private static initZeroOne(payload: JWTPayload) {
+    const { ZEROONE_API_KEY } = getServerConfig();
+    const apiKey = apiKeyManager.pick(payload?.apiKey || ZEROONE_API_KEY);
+
+    return new LobeZeroOneAI({ apiKey });
+  }
+
 }
 
 export default AgentRuntime;
