@@ -43,6 +43,18 @@ export const AgentRuntimeErrorType = {
 
   InvalidOpenRouterAPIKey: 'InvalidOpenRouterAPIKey',
   OpenRouterBizError: 'OpenRouterBizError',
+
+  InvalidTogetherAIAPIKey: 'InvalidTogetherAIAPIKey',
+  TogetherAIBizError: 'TogetherAIBizError',
+
+  InvalidMinimaxAPIKey: 'InvalidMinimaxAPIKey',
+  MinimaxBizError: 'MinimaxBizError',
+
+  InvalidDeepSeekAPIKey: 'InvalidDeepSeekAPIKey',
+  DeepSeekBizError: 'DeepSeekBizError',
+
+  InvalidQwenAPIKey: 'InvalidQwenAPIKey',
+  QwenBizError: 'QwenBizError',
 } as const;
 
 export type ILobeAgentRuntimeErrorType =
